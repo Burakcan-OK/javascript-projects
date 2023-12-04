@@ -1,0 +1,89 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family:  sans-serif;
+    color: #fff;
+    background-image: url('oc.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+}
+.app{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+    height: 100vh;
+
+}
+.header{
+    padding: 50px 20px 30px 30px ;
+}
+.header h1 {
+    font-size: 50px;
+    color: #fbb034;
+    text-shadow: 1px 3px rgba(0, 0, 0, 9);
+}
+.header input{
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    border-bottom: 2px solid #fbb034;
+    text-align: center;
+    font-size: 20px;
+    color: #f2f2f2;
+}
+.city{
+    font-size: 35px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    text-shadow: 1px 3px rgba(0, 0, 0, 8) ;
+}
+.temp{
+    font-size: 100px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-shadow: 1px 5px rgba(0, 0, 0, 1);
+}
+.desc,.minmax{
+    font-size: 25px;
+    font-style: italic;
+    text-shadow: 1px 3px rgba(0, 0, 0, 8) ;
+    margin-bottom: 10px;
+}
+
+/* const getCity= (cityName) =>{
+
+    let query= `${url2}?apikey=${api}&q=${cityName}`
+    const data= fetch(query).json()
+    return data[0]
+}
+const getWeather=(locationKey)=>{
+    const query=`${url}${locationKey}&?apikey=${api}`
+    const data = fetch(query).json()
+    return data[0]
+}
+const updateCity = (city) =>{
+    const cityDetails = getCity(city)
+    const cityWeather = getWeather(cityDetails.Key)
+    return {cityDetails,cityWeather}
+}
+let city = document.querySelector('.city')
+city.innerText = `${cityDetails.EnglishName}, ${result.sys.country}`
+
+let temp = document.querySelector('.temp')
+temp.innerText = `${Math.round(cityWeather.Temprature.Metric.Value)}°C`
+
+let desc = document.querySelector('.desc')
+desc.innerText = cityWeather.WeatherText
+
+let minmax = document.querySelector('.minmax')
+minmax.innerText = `${Math.round(result.min.temp_min)}°C / 
+                        ${Math.round(result.main.temp_max)}°C` */
