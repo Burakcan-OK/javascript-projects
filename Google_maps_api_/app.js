@@ -13,7 +13,7 @@ function onSucess(position){
 
     initMap()
     
-    const api_key= "fce818452356488b8630a0f89d0263df"
+    const api_key= "your_api_key"
     const url= `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${api_key}`
 
     fetch(url)
