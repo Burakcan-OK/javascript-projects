@@ -58,32 +58,3 @@ body{
     text-shadow: 1px 3px rgba(0, 0, 0, 8) ;
     margin-bottom: 10px;
 }
-
-/* const getCity= (cityName) =>{
-
-    let query= `${url2}?apikey=${api}&q=${cityName}`
-    const data= fetch(query).json()
-    return data[0]
-}
-const getWeather=(locationKey)=>{
-    const query=`${url}${locationKey}&?apikey=${api}`
-    const data = fetch(query).json()
-    return data[0]
-}
-const updateCity = (city) =>{
-    const cityDetails = getCity(city)
-    const cityWeather = getWeather(cityDetails.Key)
-    return {cityDetails,cityWeather}
-}
-let city = document.querySelector('.city')
-city.innerText = `${cityDetails.EnglishName}, ${result.sys.country}`
-
-let temp = document.querySelector('.temp')
-temp.innerText = `${Math.round(cityWeather.Temprature.Metric.Value)}°C`
-
-let desc = document.querySelector('.desc')
-desc.innerText = cityWeather.WeatherText
-
-let minmax = document.querySelector('.minmax')
-minmax.innerText = `${Math.round(result.min.temp_min)}°C / 
-                        ${Math.round(result.main.temp_max)}°C` */

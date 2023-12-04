@@ -1,70 +1,39 @@
-const url ="https://dataservice.accuweather.com/currentconditions/v1/"
-const url2='https://dataservice.accuweather.com/locations/v1/cities/search'
-
-const api='SAoImYWrYzqX6RO2tnMaHbP4o3NYuSEK'
+const api='58703466e5f95fbebe89fcc883153cf4'
 
 const setQuery =(e)=>{
     if(e.keyCode=='13')
     getCity(searchBar.value)
-    const city = getCityForm.city.value.trim();
-    getCityForm.reset();
-
-    updateCity(city)
-        .then(data => updateUI(data))
-        .catch(err => {
-            console.log(alert('Please enter a valid city name'))
-            console.log(err);
-        })
 }
 
 const getCity= (cityName) =>{
 
-    let query= `${url2}?apikey=${api}&q=${cityName}`
-    fetch(query)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${api}&units=metric&lang=tr`)
     .then(weather =>{
         return weather.json()
     })
-    .then(displayCity)
+    .then(display)
 }
-const displayCity=(result)=>{
+const display=(result)=>{
     
-    const cityData=result[0]
-    console.log(cityData)
+    console.log(result)
     
     let city = document.querySelector('.city')
-    city.innerText = `${cityData.LocalizedName}, ${cityData.Country.ID}`
+    city.innerText = `${result.name}, ${result.sys.country}`
 
-}
-const updateCity = (city) =>{
-    const cityDetails = getCity(city)
-    const cityWeather = getWeather(cityDetails.Key)
-    
-    return {cityDetails,cityWeather}
-}
-const getWeather= (locationKey) =>{
-
-    let query= `${url}${locationKey}?apikey=${api}`
-    fetch(query)
-    .then(weather =>{
-        return weather.json()
-    })
-    .then(displayWeather)
-}
-const displayWeather=(result)=>{
-    
-    const weatherData=result[0]
-    console.log(weatherData)
-    
-    
     let temp = document.querySelector('.temp')
     temp.innerText = `${Math.round(result.main.temp)}°C`
 
     let desc = document.querySelector('.desc')
-    desc.innerText = weatherData.WeatherText
+    desc.innerText = result.weather[0].description
 
     let minmax = document.querySelector('.minmax')
-    minmax.innerText = `${Math.round(result.min.temp_min)}°C / 
-                        ${Math.round(result.main.temp_max)}°C`
+    minmax.innerText = `${Math.round(result.main.temp_min)} °C / ${Math.round(result.main.temp_max)} °C `
+
+    let wind = document.querySelector('.wind')
+    wind.innerText = `${result.wind.deg} °deg, Hız: ${result.wind.speed} km`
+
+    
+
 }
 
 const searchBar = document.getElementById('searchBar')
